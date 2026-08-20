@@ -19,12 +19,13 @@ import profileAvatar from '../tianyi.jpg';
 import './styles.css';
 
 const circleAssistantUrl = 'http://139.155.156.42/chatbot/ob13wH9GJQcFEG7P';
+const knowledgeBaseUrl = 'http://139.155.156.42/datasets';
 
 const difyLinks = {
   circle: import.meta.env.VITE_DIFY_CIRCLE_ASSISTANT_URL || circleAssistantUrl,
   redbook: import.meta.env.VITE_DIFY_REDBOOK_ANALYZER_URL || '#agent-redbook',
   repurpose: import.meta.env.VITE_DIFY_REPURPOSE_ASSISTANT_URL || '#agent-repurpose',
-  knowledge: import.meta.env.VITE_DIFY_KNOWLEDGE_BASE_URL || '#knowledge',
+  knowledge: import.meta.env.VITE_DIFY_KNOWLEDGE_BASE_URL || knowledgeBaseUrl,
 };
 
 const getExternalLinkProps = (
