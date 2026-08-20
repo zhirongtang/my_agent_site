@@ -15,11 +15,13 @@ npm run dev
 
 ```bash
 VITE_PROFILE_AVATAR_URL=/avatar.jpg
-VITE_DIFY_CIRCLE_ASSISTANT_URL=
+VITE_DIFY_CIRCLE_ASSISTANT_URL=https://your-dify-domain.example/chatbot/ob13wH9GJQcFEG7P
 VITE_DIFY_REDBOOK_ANALYZER_URL=
 VITE_DIFY_REPURPOSE_ASSISTANT_URL=
 VITE_DIFY_KNOWLEDGE_BASE_URL=
 ```
+
+首页的智能体卡片、顶部「开始体验」和底部「体验朋友圈助手」会跳转到对应 Dify 地址。外部链接会在新标签页打开。
 
 如果使用本地头像文件，把图片放到 `public/avatar.jpg`，并保持 `VITE_PROFILE_AVATAR_URL=/avatar.jpg`。
 

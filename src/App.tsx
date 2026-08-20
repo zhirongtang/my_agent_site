@@ -14,6 +14,7 @@ import {
   TrendingUp,
   UsersRound,
 } from 'lucide-react';
+import type { AnchorHTMLAttributes } from 'react';
 import profileAvatar from '../tianyi.jpg';
 import './styles.css';
 
@@ -23,6 +24,13 @@ const difyLinks = {
   repurpose: import.meta.env.VITE_DIFY_REPURPOSE_ASSISTANT_URL || '#agent-repurpose',
   knowledge: import.meta.env.VITE_DIFY_KNOWLEDGE_BASE_URL || '#knowledge',
 };
+
+const getExternalLinkProps = (
+  href: string,
+): Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'rel' | 'target'> =>
+  /^https?:\/\//.test(href)
+    ? { target: '_blank', rel: 'noopener noreferrer' }
+    : {};
 
 const imageUrl = (prompt: string, imageSize: string) =>
   `https://copilot-cn.bytedance.net/api/ide/v1/text_to_image?prompt=${encodeURIComponent(prompt)}&image_size=${imageSize}`;
@@ -85,7 +93,7 @@ function App() {
             <a href="#knowledge">知识库</a>
             <a href="#method">陪跑方法</a>
           </nav>
-          <a className="header-action" href={difyLinks.circle}>
+          <a className="header-action" href={difyLinks.circle} {...getExternalLinkProps(difyLinks.circle)}>
             开始体验
             <ArrowRight size={16} />
           </a>
@@ -106,7 +114,7 @@ function App() {
                 选择智能体
                 <ChevronRight size={18} />
               </a>
-              <a className="secondary-button" href={difyLinks.knowledge}>
+              <a className="secondary-button" href={difyLinks.knowledge} {...getExternalLinkProps(difyLinks.knowledge)}>
                 <BookOpenText size={18} />
                 查看知识库
               </a>
@@ -141,7 +149,13 @@ function App() {
           {agents.map((agent) => {
             const Icon = agent.icon;
             return (
-              <article className="agent-card" id={agent.id} key={agent.id}>
+              <a
+                className="agent-card"
+                href={agent.href}
+                id={agent.id}
+                key={agent.id}
+                {...getExternalLinkProps(agent.href)}
+              >
                 <div className="agent-icon">
                   <Icon size={26} />
                 </div>
@@ -158,11 +172,11 @@ function App() {
                     </span>
                   ))}
                 </div>
-                <a className="agent-link" href={agent.href}>
+                <span className="agent-link">
                   进入体验
                   <ArrowRight size={16} />
-                </a>
-              </article>
+                </span>
+              </a>
             );
           })}
         </div>
@@ -219,7 +233,7 @@ function App() {
               </span>
             ))}
           </div>
-          <a className="primary-button slim" href={difyLinks.knowledge}>
+          <a className="primary-button slim" href={difyLinks.knowledge} {...getExternalLinkProps(difyLinks.knowledge)}>
             进入知识库
             <ArrowRight size={17} />
           </a>
@@ -248,7 +262,7 @@ function App() {
         <span className="section-kicker">Start Here</span>
         <h2>先让用户进来体验，再用智能体完成交付。</h2>
         <p>替换 Dify 链接后，这个首页就可以作为你的个人 IP AI 工具入口。</p>
-        <a className="primary-button" href={difyLinks.circle}>
+        <a className="primary-button" href={difyLinks.circle} {...getExternalLinkProps(difyLinks.circle)}>
           体验朋友圈助手
           <ArrowRight size={18} />
         </a>
