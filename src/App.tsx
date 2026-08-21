@@ -21,11 +21,11 @@ import './styles.css';
 const circleAssistantUrl = 'http://139.155.156.42/chatbot/ob13wH9GJQcFEG7P';
 const knowledgeBaseUrl = 'http://139.155.156.42/datasets';
 
-const difyLinks = {
-  circle: import.meta.env.VITE_DIFY_CIRCLE_ASSISTANT_URL || circleAssistantUrl,
-  redbook: import.meta.env.VITE_DIFY_REDBOOK_ANALYZER_URL || '#agent-redbook',
-  repurpose: import.meta.env.VITE_DIFY_REPURPOSE_ASSISTANT_URL || '#agent-repurpose',
-  knowledge: import.meta.env.VITE_DIFY_KNOWLEDGE_BASE_URL || knowledgeBaseUrl,
+const agentLinks = {
+  circle: import.meta.env.VITE_AGENT_CIRCLE_ASSISTANT_URL || circleAssistantUrl,
+  redbook: import.meta.env.VITE_AGENT_REDBOOK_ANALYZER_URL || '#agent-redbook',
+  repurpose: import.meta.env.VITE_AGENT_REPURPOSE_ASSISTANT_URL || '#agent-repurpose',
+  knowledge: import.meta.env.VITE_AGENT_KNOWLEDGE_BASE_URL || knowledgeBaseUrl,
 };
 
 const getExternalLinkProps = (
@@ -50,7 +50,7 @@ const agents = [
     desc: '把日常素材改成有人味、有成交线索的朋友圈内容，适合成交型 IP 每天稳定输出。',
     points: ['选题拆解', '口吻改写', '成交钩子'],
     icon: MessageCircleMore,
-    href: difyLinks.circle,
+    href: agentLinks.circle,
   },
   {
     id: 'agent-redbook',
@@ -59,7 +59,7 @@ const agents = [
     desc: '输入对标账号和目标赛道，拆内容结构、爆文规律、商业定位和可复制动作。',
     points: ['爆款共性', '人设定位', '选题库'],
     icon: SearchCheck,
-    href: difyLinks.redbook,
+    href: agentLinks.redbook,
   },
   {
     id: 'agent-repurpose',
@@ -68,7 +68,7 @@ const agents = [
     desc: '把一段观点、一场直播或一篇长文改造成多平台素材，减少重复创作成本。',
     points: ['长文切片', '多平台改写', '发布节奏'],
     icon: FileStack,
-    href: difyLinks.repurpose,
+    href: agentLinks.repurpose,
   },
 ];
 
@@ -96,7 +96,7 @@ function App() {
             <a href="#knowledge">知识库</a>
             <a href="#method">陪跑方法</a>
           </nav>
-          <a className="header-action" href={difyLinks.circle} {...getExternalLinkProps(difyLinks.circle)}>
+          <a className="header-action" href={agentLinks.circle} {...getExternalLinkProps(agentLinks.circle)}>
             开始体验
             <ArrowRight size={16} />
           </a>
@@ -110,14 +110,14 @@ function App() {
             </div>
             <h1>把你的内容、私域和成交动作装进智能体。</h1>
             <p>
-              这里是天意的 IP 智能体体验平台。AI 对话、知识库和自动化工作流由 Dify 承载，首页只负责让用户快速理解、选择并进入对应智能体。
+              这里是天意的 IP 智能体体验平台。AI 对话、知识库和自动化工作流由后端智能服务承载，首页只负责让用户快速理解、选择并进入对应智能体。
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#agents">
                 选择智能体
                 <ChevronRight size={18} />
               </a>
-              <a className="secondary-button" href={difyLinks.knowledge} {...getExternalLinkProps(difyLinks.knowledge)}>
+              <a className="secondary-button" href={agentLinks.knowledge} {...getExternalLinkProps(agentLinks.knowledge)}>
                 <BookOpenText size={18} />
                 查看知识库
               </a>
@@ -131,7 +131,7 @@ function App() {
             />
             <div className="floating-panel status-panel">
               <Bot size={20} />
-              <span>Dify 智能体已就绪</span>
+              <span>智能体服务已就绪</span>
             </div>
             <div className="floating-panel metric-panel">
               <strong>3+</strong>
@@ -145,7 +145,7 @@ function App() {
         <div className="section-heading">
           <span className="section-kicker">Agent Console</span>
           <h2>先进智能体，再进入工作流。</h2>
-          <p>每个入口都可以替换成 Dify 应用链接。当前页面先完成营销承接与体验分流。</p>
+          <p>每个入口都可以替换成独立智能体链接。当前页面先完成营销承接与体验分流。</p>
         </div>
 
         <div className="agent-grid">
@@ -190,7 +190,7 @@ function App() {
           <span className="section-kicker">Operating System</span>
           <h2>不是给你一堆提示词，是把 IP 经营动作产品化。</h2>
           <p>
-            首页负责讲清楚价值和路径；Dify 负责承载对话、知识检索、工作流编排和后续迭代。这样你的前端可以稳定获客，后端可以快速扩展新智能体。
+            首页负责讲清楚价值和路径；后端智能服务负责承载对话、知识检索、工作流编排和后续迭代。这样你的前端可以稳定获客，后端可以快速扩展新智能体。
           </p>
         </div>
         <div className="method-steps">
@@ -226,7 +226,7 @@ function App() {
           <span className="section-kicker">Knowledge Base</span>
           <h2>把你的经验、案例和 SOP 沉淀成可调用资产。</h2>
           <p>
-            用户不需要理解 Dify 的复杂度，只需要从首页选择场景。后端知识库可以持续补充你的课程、案例、复盘和模板。
+            用户不需要理解底层系统的复杂度，只需要从首页选择场景。后端知识库可以持续补充你的课程、案例、复盘和模板。
           </p>
           <div className="playbook-list">
             {playbooks.map((item) => (
@@ -236,7 +236,7 @@ function App() {
               </span>
             ))}
           </div>
-          <a className="primary-button slim" href={difyLinks.knowledge} {...getExternalLinkProps(difyLinks.knowledge)}>
+          <a className="primary-button slim" href={agentLinks.knowledge} {...getExternalLinkProps(agentLinks.knowledge)}>
             进入知识库
             <ArrowRight size={17} />
           </a>
@@ -256,7 +256,7 @@ function App() {
         </div>
         <div>
           <Bot size={22} />
-          <strong>Dify 承载</strong>
+          <strong>智能体承载</strong>
           <span>对话、知识库、工作流独立迭代</span>
         </div>
       </section>
@@ -264,8 +264,8 @@ function App() {
       <section className="final-cta">
         <span className="section-kicker">Start Here</span>
         <h2>先让用户进来体验，再用智能体完成交付。</h2>
-        <p>替换 Dify 链接后，这个首页就可以作为你的个人 IP AI 工具入口。</p>
-        <a className="primary-button" href={difyLinks.circle} {...getExternalLinkProps(difyLinks.circle)}>
+        <p>替换智能体链接后，这个首页就可以作为你的个人 IP AI 工具入口。</p>
+        <a className="primary-button" href={agentLinks.circle} {...getExternalLinkProps(agentLinks.circle)}>
           体验朋友圈助手
           <ArrowRight size={18} />
         </a>
